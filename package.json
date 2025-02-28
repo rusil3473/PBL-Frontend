@@ -11,14 +11,14 @@
   },
   "dependencies": {
     "@codemirror/lang-cpp": "^6.0.2",
-    "@tailwindcss/vite": "^4.0.8",
+    "@tailwindcss/vite": "^4.0.9",
     "@uiw/codemirror-theme-dracula": "^4.23.8",
     "@uiw/react-codemirror": "^4.23.8",
     "axios": "^1.7.9",
     "codemirror": "^6.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.8"
+    "tailwindcss": "^4.0.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
