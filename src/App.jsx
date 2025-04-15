@@ -3,6 +3,8 @@ import axios from "axios";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
 import { dracula } from "@uiw/codemirror-theme-dracula";
+import { Axios } from "./axios";
+const apiUrl = process.env.URL;
 
 const App = () => {
   const [code, setCode] = useState(
@@ -14,12 +16,9 @@ const App = () => {
   const handleCompile = async (fileId) => {
     try {
       setOutput("Compiling...");
-      const response = await axios.post(
-        "https://e3ae-2409-40c2-129c-7a4b-816c-f953-2ff6-7383.ngrok-free.app/compile",
-        {
-          code,
-        }
-      );
+      const response = await Axios.post("/compile", {
+        code,
+      });
 
       if (response.data.errors) {
         setOutput(response.data.errors);
@@ -28,9 +27,7 @@ const App = () => {
         console.log("Response Data:", response.data, response.fileId);
         setOutput(response.data.message);
         if (response.data.downloadLink) {
-          setDownloadLink(
-            `https://e3ae-2409-40c2-129c-7a4b-816c-f953-2ff6-7383.ngrok-free.app/download/${response.data.fileId}`
-          );
+          setDownloadLink(`${apiUrl}/download/${response.data.fileId}`);
         }
       }
     } catch (error) {
